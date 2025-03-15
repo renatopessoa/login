@@ -1,5 +1,6 @@
 import Login from "@/pages/Login";
-import Image from "next/image";
+import logincss from "@/pages/Login"
+
 
 export default function Home() {
   return (
