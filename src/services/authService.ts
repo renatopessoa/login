@@ -12,7 +12,7 @@ export const authService = {
     async login(username: string, password: string): Promise<User | null> {
         try {
             const result = await pool.query(
-                'SELECT id, username, email FROM readcircle.users WHERE username = $1 AND password = $2',
+                'SELECT id, username, email FROM public.users WHERE username = $1 AND password = $2',
                 [username, password] // Note: In production, use password hashing
             );
 
@@ -30,7 +30,7 @@ export const authService = {
     async register(user: User): Promise<User | null> {
         try {
             const result = await pool.query(
-                'INSERT INTO readcircle.users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email',
+                'INSERT INTO public.users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email',
                 [user.username, user.email, user.password] // Note: In production, hash the password
             );
 
