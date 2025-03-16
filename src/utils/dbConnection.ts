@@ -25,13 +25,15 @@ const getPool = () => {
                 } else {
                     console.log('Database connected successfully!');
                     // Set search path to use the specified schema
-                    pool.query(`SET search_path TO ${dbConfig.schema}`, (err) => {
-                        if (err) {
-                            console.error('Error setting schema:', err);
-                        } else {
-                            console.log(`Schema set to ${dbConfig.schema}`);
-                        }
-                    });
+                    if (pool) {
+                        pool.query(`SET search_path TO ${dbConfig.schema}`, (err) => {
+                            if (err) {
+                                console.error('Error setting schema:', err);
+                            } else {
+                                console.log(`Schema set to ${dbConfig.schema}`);
+                            }
+                        });
+                    }
                 }
             });
         }
